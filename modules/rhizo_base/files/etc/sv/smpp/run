@@ -1,3 +1,0 @@
-#!/bin/sh
-export PYTHONPATH=$PYTHONPATH:/var/rhizomatica/rccn
-exec python /var/rhizomatica/rccn/smpp.py

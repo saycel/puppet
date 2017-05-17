@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /usr/bin/chpst -urhizomatica /usr/bin/nodejs /usr/share/kiwiirc/server/kiwi.js -f 
