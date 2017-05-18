@@ -18,6 +18,7 @@ class rhizo_base::lcr {
 
   service { 'lcr':
        provider => 'runit',
+       path => '/usr/bin',
        restart => true,
        enable  => false,
        require => Package['lcr']
