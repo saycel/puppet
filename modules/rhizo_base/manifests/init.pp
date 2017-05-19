@@ -140,7 +140,6 @@ class rhizo_base {
   include kannel
   include sshkeys
   include rhizo_base::fixes
-  include rhizo_base::apt_fix
   include rhizo_base::apt
   include rhizo_base::puppetlabs
   include rhizo_base::postgresql
