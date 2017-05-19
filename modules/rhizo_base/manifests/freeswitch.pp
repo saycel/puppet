@@ -54,7 +54,7 @@ class rhizo_base::freeswitch {
     }
 
   service { 'freeswitch':
-      provider => 'runit',
+      provider => 'daemontools',
       path => '/etc/sv',
       enable  => false,
       require => Package['freeswitch']
