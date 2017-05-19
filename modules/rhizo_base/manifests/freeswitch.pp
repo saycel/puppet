@@ -54,6 +54,8 @@ class rhizo_base::freeswitch {
     }
 
   service { 'freeswitch':
+      provider => 'runit',
+      path => '/etc/sv',
       enable  => false,
       require => Package['freeswitch']
     }
