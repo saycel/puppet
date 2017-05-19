@@ -17,7 +17,7 @@ class rhizo_base::packages {
   }
   Exec["apt-update"] -> Package <| |>
   
-  package { ['mosh', 'git', 'openvpn', 'lm-sensors', 'runit', 'sqlite3',
+  package { ['mosh', 'git', 'openvpn', 'lm-sensors', 'runit', 'daemontools', 'sqlite3',
             'libffi-dev']:
       ensure  => installed,
       require => Class['rhizo_base::apt'],
