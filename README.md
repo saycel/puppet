@@ -7,6 +7,9 @@ To have a working repo, you should also include all the submodules:
     git submodule init
     git submodule update
 
+           or
+    git clone --recursive (runs both commands above while git cloning the repository.)
+
 To have a fully configured system from scratch, these are the steps:
 
 1 - Install `Ubuntu 12.04, 64-bit version`. There is a preseed file included in this git repo which can make it easier and faster `:)`
