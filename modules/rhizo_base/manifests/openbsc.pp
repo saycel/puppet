@@ -32,7 +32,7 @@ class rhizo_base::openbsc {
       ensure   => latest,
       require  => Class['rhizo_base::apt'],
       notify   => [ Exec['hlr_pragma_wal'],
-                    Exec['restart-nitb'] ],
+                    Service['osmo-nitb'] ],
     }
 
   package { [ 'libosmoabis3', 'libosmocore4',
@@ -59,7 +59,7 @@ class rhizo_base::openbsc {
   file { '/etc/osmocom/osmo-nitb.cfg':
       content => template('rhizo_base/osmo-nitb.cfg.erb'),
       require => Package['osmocom-nitb'],
-      notify  => Exec['restart-nitb'],
+      notify  => Service['osmo-nitb'],
     }
 
   exec { 'hlr_pragma_wal':
@@ -69,10 +69,11 @@ class rhizo_base::openbsc {
       refreshonly => true,
     }
 
-  exec { 'restart-nitb':
-      command     => '/usr/bin/sv restart osmo-nitb',
+  service { 'restart-nitb':
+      provider => 'daemontools',
+      path => '/etc/sv',
+      restart => true,
       require     => Class['rhizo_base::packages'],
-      refreshonly => true,
     }
 
   }
