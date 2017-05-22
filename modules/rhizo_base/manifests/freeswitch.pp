@@ -53,7 +53,9 @@ class rhizo_base::freeswitch {
       require => Class['rhizo_base::apt'],
     }
 
-  service { 'freeswitch':
+  service { 'freeswitch-setup':
+      provider => 'daemontools',
+      path => '/etc/sv',
       enable  => false,
       require => Package['freeswitch']
     }
