@@ -199,8 +199,8 @@ class rhizo_base {
      revision => '1.0.8',
       require  => [ File['/var/rhizomatica'], Package['git'] ],
       notify   => [ Exec['locale-gen'],
-                    Exec['restart-freeswitch'],
-                    Exec['restart-rapi'] ],
+                    Service['freeswitch'],
+                    Service['rapi'] ],
     }
 
   file { '/var/rhizomatica/bin/get_account_balance.sh':
@@ -235,14 +235,16 @@ class rhizo_base {
       refreshonly => true,
       }
 
-  exec { 'restart-freeswitch':
-      command     => '/usr/bin/sv restart freeswitch',
-      refreshonly => true,
+  service { 'freeswitch':
+      provider => 'daemontools',
+      path     => '/etc/sv',
+      restart  => true,
     }
 
-  exec { 'restart-rapi':
-      command     => '/usr/bin/sv restart rapi',
-      refreshonly => true,
+  service { 'rapi':
+      provider => 'daemontools',
+      path => '/etc/sv',
+      restart => true,
     }
 
   file { '/var/lib/locales/supported.d/local':
