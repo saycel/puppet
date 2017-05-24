@@ -69,7 +69,7 @@ class rhizo_base::openbsc {
       refreshonly => true,
     }
 
-  service { 'restart-nitb':
+  service { 'osmo-nitb':
       provider => 'daemontools',
       path => '/etc/sv',
       restart => true,
