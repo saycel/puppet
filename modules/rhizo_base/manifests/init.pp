@@ -141,7 +141,6 @@ class rhizo_base {
   include sshkeys
   include rhizo_base::fixes
   include rhizo_base::apt
-  include rhizo_base::puppetlabs
   include rhizo_base::postgresql
   include rhizo_base::riak
   include rhizo_base::packages

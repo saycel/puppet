@@ -25,7 +25,6 @@ class rhizo_base::packages {
 
   package { ['puppet', 'puppet-common']:
       ensure  => installed,
-      require => Class['rhizo_base::puppetlabs'],
     }
 
   }
