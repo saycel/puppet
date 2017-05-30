@@ -194,8 +194,7 @@ class rhizo_base {
   vcsrepo { '/var/rhizomatica':
       ensure   => present,
       provider => git,
-      source   => 'https://github.com/Rhizomatica/rccn.git',
-     revision => '1.0.8',
+      source   => 'https://github.com/saycel/rccn.git',
       require  => [ File['/var/rhizomatica'], Package['git'] ],
       notify   => [ Exec['locale-gen'],
                     Service['freeswitch'],
@@ -305,5 +304,16 @@ class rhizo_base {
   file { '/etc/cron.d/rhizomatica':
       source => 'puppet:///modules/rhizo_base/etc/cron.d/rhizomatica',
     }
+
+   exec { 'install.py':
+      command     => '/usr/bin/python /var/rhizomatica/rccn/install.py',
+      require     => Vcsrepo['/var/rhizomatica'],
+      }
+   exec { 'database_migration':
+      command     => '/usr/bin/psql /var/rhizomatica/db/migration/011_location.sql',
+      require     => Exec['install.py'],
+      user        => postgres
+      }
+
 
   }
