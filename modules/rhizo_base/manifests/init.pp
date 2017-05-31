@@ -305,15 +305,15 @@ class rhizo_base {
       source => 'puppet:///modules/rhizo_base/etc/cron.d/rhizomatica',
     }
 
-   exec { 'install.py':
-      command     => '/usr/bin/python /var/rhizomatica/rccn/install.py',
-      require     => Vcsrepo['/var/rhizomatica'],
-      }
-   exec { 'database_migration':
-      command     => '/usr/bin/psql /var/rhizomatica/db/migration/011_location.sql',
-      require     => Exec['install.py'],
-      user        => postgres
-      }
+#   exec { 'install.py':
+#      command     => '/usr/bin/python /var/rhizomatica/rccn/install.py',
+#      require     => Vcsrepo['/var/rhizomatica'],
+#      }
+#   exec { 'database_migration':
+#      command     => '/usr/bin/psql /var/rhizomatica/db/migration/011_location.sql',
+#      require     => Exec['install.py'],
+#      user        => postgres
+#      }
 
 
   }
